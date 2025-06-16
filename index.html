@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30-Day Power BI Learning Plan</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      margin-bottom: 10px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+    .week {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .week h2 {
+      font-size: 20px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .day {
+      margin-bottom: 8px;
+      padding: 8px;
+      border-left: 4px solid #3b82f6;
+      background: #f1f5f9;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .completed {
+      background: #d1fae5;
+      border-left-color: #10b981;
+      text-decoration: line-through;
+    }
+    .incomplete {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .date {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .btn {
+      padding: 3px 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn.complete {
+      background-color: #10b981;
+      color: white;
+    }
+    .btn.skip {
+      background-color: #ef4444;
+      color: white;
+    }
+    .tips {
+      background: #fff3cd;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📅 30-Day Power BI Learning Plan</h1>
+    <p class="date">Learning starts on: <strong>June 18, 2025</strong></p>
+
+    <div id="weeks"></div>
+
+    <div class="tips">
+      <strong>📘 Bonus & Tips:</strong><br>
+      Course: Power BI Tips and Tricks (1h 35m)<br>
+      Sample Data: Microsoft Datasets | Kaggle<br>
+      Tools: Excel, CSV, Google Sheets<br><br>
+      🧠 Use Notion or a notebook to log your progress.<br>
+      ✨ Rebuild everything from scratch — not just watch.<br>
+      📢 Share your projects on LinkedIn for visibility!
+    </div>
+  </div>
+
+  <script>
+    const plan = [
+      {
+        title: "🔰 Week 1 – Foundations & Setup (Learning Power BI Desktop)",
+        tasks: [
+          "Install Power BI Desktop, understand UI & workspace",
+          "Connect to Excel/CSV data, navigate fields & visuals",
+          "Create basic charts, slicers, filters",
+          "Build your first interactive dashboard",
+          "Publish dashboard to Power BI Service",
+          "Practice with another dataset (Sales or HR)",
+          "📝 Review + Earn Certificate 1"
+        ]
+      },
+      {
+        title: "📊 Week 2 – Core Skills (Power BI Essential Training)",
+        tasks: [
+          "Learn Power Query – cleaning & transforming data",
+          "Data modeling – relationships, keys",
+          "Understand filters, slicers, drill-through",
+          "Intro to DAX – calculated columns and measures",
+          "Conditional formatting, formatting tips",
+          "Create a sales dashboard",
+          "📝 Review + Earn Certificate 2"
+        ]
+      },
+      {
+        title: "🧠 Week 3 – DAX Deep Dive (Power BI Data Modeling with DAX)",
+        tasks: [
+          "Learn DAX basics",
+          "Explore DAX context",
+          "Time intelligence functions",
+          "Build measures & KPIs",
+          "Create a DAX-based dashboard",
+          "Practice with custom dataset",
+          "📝 Review + Earn Certificate 3"
+        ]
+      },
+      {
+        title: "🚀 Week 4 – Advanced Reporting (Advanced Microsoft Power BI)",
+        tasks: [
+          "Advanced Power Query + Query folding",
+          "M Language basics",
+          "Row-level security setup",
+          "Performance tuning",
+          "Use bookmarks, buttons, dynamic pages",
+          "Build a final advanced report",
+          "📝 Review + Earn Certificate 4"
+        ]
+      },
+      {
+        title: "🎓 Week 5 – Final Project + Portfolio",
+        tasks: [
+          "Build a final dashboard project",
+          "Upload project + Add certificates to LinkedIn"
+        ]
+      }
+    ];
+
+    const container = document.getElementById("weeks");
+    plan.forEach(week => {
+      const div = document.createElement("div");
+      div.className = "week";
+      div.innerHTML = `<h2>${week.title}</h2>`;
+      week.tasks.forEach((task, index) => {
+        const taskId = `${week.title}-${index}`.replace(/[^a-zA-Z0-9]/g, "");
+        div.innerHTML += `
+          <div class="day" id="${taskId}">
+            <span>${task}</span>
+            <div class="actions">
+              <button class="btn complete" onclick="markComplete('${taskId}')">✅ Done</button>
+              <button class="btn skip" onclick="markIncomplete('${taskId}')">❌ Skipped</button>
+            </div>
+          </div>`;
+      });
+      container.appendChild(div);
+    });
+
+    function markComplete(id) {
+      const el = document.getElementById(id);
+      el.classList.remove("incomplete");
+      el.classList.add("completed");
+    }
+
+    function markIncomplete(id) {
+      const el = document.getElementById(id);
+      el.classList.remove("completed");
+      el.classList.add("incomplete");
+    }
+  </script>
+</body>
+</html>
